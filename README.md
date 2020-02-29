@@ -358,7 +358,7 @@ Lastly, for the `directory`, insert the location of the scoreboard directory. It
 the `{user}` will be `pi`.
 
 Now, reboot the raspberry pi. It should run the scoreboard automatically. Open a browser and enter the ip address of your raspberry pi in the address bar
-fallowing of `:9001`. It should look similar to this `192.168.2.19:9001`. You will see the supervisor dashboard with the scoreboard process running.
+following of `:9001`. It should look similar to this `192.168.2.19:9001`. You will see the supervisor dashboard with the scoreboard process running.
 If you see the dashboard but no process, reboot the pi and refresh the page. 
 
 You should be up and running now. From the supervison dashboard, you can control the process of the scoreboard (e.g start, restart, stop).
@@ -369,7 +369,7 @@ is doing in case of a problem.
 ### Method #2 Using Terminal Multiplexer (Hands on method)
 To make sure it keeps running you will need a Terminal Multiplexer like. [Screen](https://linuxize.com/post/how-to-use-linux-screen/).
 This allows you to run the scoreboard manually in a terminal and 
-To install Screen, run the fallowing in your terminal.
+To install Screen, run the following in your terminal.
 ```
 sudo apt install screen
 ```
