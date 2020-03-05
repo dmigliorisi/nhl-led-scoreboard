@@ -107,7 +107,7 @@ class Data:
         self.year, self.month, self.day = self.__parse_today()
 
     def _is_new_day(self):
-        debug.info('Checking for new day')
+#         debug.info('Checking for new day')
         self.refresh_current_date()
         if self.today != self.date():
             debug.info('It is a new day, refreshing Data')

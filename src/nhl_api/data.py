@@ -3,7 +3,7 @@ import json
 import requests
 import debug
 
-BASE_URL = "http://statsapi.web.nhl.com/api/v1/"
+BASE_URL = "http://statsapi.web.nhl.com/api/v1/``"
 SCHEDULE_URL = BASE_URL + 'schedule?date={0}-{1}-{2}&expand=schedule.linescore'
 TEAM_URL = '{0}/teams?expand=team.stats,team.schedule.previous,team.schedule.next'.format(BASE_URL)
 OVERVIEW_URL = BASE_URL + 'game/{0}/feed/live?site=en_nhl'

@@ -1,6 +1,8 @@
 from PIL import Image, ImageFont, ImageDraw, ImageSequence
 from utils import center_text, convert_date_format
 from renderer.logos import TeamLogos as LogoRenderer
+from time import sleep
+import debug
 
 
 class ScoreboardRenderer:
@@ -10,8 +12,10 @@ class ScoreboardRenderer:
         self.layout = self.data.config.layout
         self.font = self.layout.font
         self.font_large = self.layout.font_large
+        self.font_woo = self.layout.font_woo
         self.scoreboard = scoreboard
         self.matrix = matrix
+        self.team_colors = data.config.team_colors
 
         self.home_logo_renderer = LogoRenderer(
             self.matrix,
@@ -136,3 +140,4 @@ class ScoreboardRenderer:
                                       self.matrix.height - 2, colors[str(home_number_skaters)])
         self.matrix.graphics.DrawLine(self.matrix.matrix, 63, self.matrix.height - 3, 63,
                                       self.matrix.height - 3, colors[str(home_number_skaters)])
+
