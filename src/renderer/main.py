@@ -77,72 +77,48 @@ class MainRenderer:
             self.boards._off_day(self.data, self.matrix)
 
     def __render_game_day(self):
+        debug.info("Showing Game")
+        # Initialize the scoreboard. get the current status at startup
+        self.data.refresh_overview()
+        self.scoreboard = Scoreboard(self.data.overview, self.data.teams_info, self.data.config)
+        self.away_score = self.scoreboard.away_team.goals
+        self.home_score = self.scoreboard.home_team.goals
+        while True:
 
-        if self.ser.in_waiting > 0:
-            line = self.ser.readline().decode('utf-8').rstrip()
-            debug.info(line)
-            if line == "1":
-                self._draw_goal_light_display()
-            elif line == "2":
-                # draw pp animation
-                self._draw_goal_light_display()
-            elif line == "3":
-                # draw josh bailey
-                self._draw_jb_animation()
-                sleep(6.75)
-                self._draw_jb_animation()
-            elif line == "4":
-                debug.info("Pageau")
-                # draw pageau animation
-                self._draw_pageau_animation()
-            elif line == "5":
-                # draw the rangers suck
-                self.draw_scroll_text("CHAARGEE")
-            elif line == "6":
-                # draw the rangers suck
-                self.draw_scroll_text("The Rangers Suck")
-#         debug.info("Showing Game")
-#         # Initialize the scoreboard. get the current status at startup
-#         self.data.refresh_overview()
-#         self.scoreboard = Scoreboard(self.data.overview, self.data.teams_info, self.data.config)
-#         self.away_score = self.scoreboard.away_team.goals
-#         self.home_score = self.scoreboard.home_team.goals
-#         while True:
-#
-#             if self.data._is_new_day():
-#                 debug.log('This is a new day')
-#                 return
-#
-#             if self.data.needs_refresh:
-#                 print("refreshing")
-#                 self.data.refresh_current_date()
-#                 self.data.refresh_overview()
-#                 self.data.refresh_games()
-#                 self.data.refresh_standings()
-#                 if self.data.network_issues:
-#                     self.matrix.network_issue_indicator()
-#
-#             if self.status.is_live(self.data.overview.status):
-#                 """ Live Game state """
-#                 debug.info("Game is Live")
-#                 self.scoreboard = Scoreboard(self.data.overview, self.data.teams_info, self.data.config)
-#                 self.check_new_goals()
-#                 self.__render_live(self.scoreboard)
-#
-#             elif self.status.is_final(self.data.overview.status):
-#                 """ Post Game state """
-#                 debug.info("Game Over")
-#                 self.scoreboard = Scoreboard(self.data.overview, self.data.teams_info, self.data.config)
-#                 self.__render_postgame(self.scoreboard)
-#
-#
-#             elif self.status.is_scheduled(self.data.overview.status):
-#                 """ Pre-game state """
-#                 debug.info("Game is Scheduled")
-#                 self.scoreboard = Scoreboard(self.data.overview, self.data.teams_info, self.data.config)
-#                 self.__render_pregame(self.scoreboard)
-#
-#
+            if self.data._is_new_day():
+                debug.log('This is a new day')
+                return
+
+            if self.data.needs_refresh:
+                print("refreshing")
+                self.data.refresh_current_date()
+                self.data.refresh_overview()
+                self.data.refresh_games()
+                self.data.refresh_standings()
+                if self.data.network_issues:
+                    self.matrix.network_issue_indicator()
+
+            if self.status.is_live(self.data.overview.status):
+                """ Live Game state """
+                debug.info("Game is Live")
+                self.scoreboard = Scoreboard(self.data.overview, self.data.teams_info, self.data.config)
+                self.check_new_goals()
+                self.__render_live(self.scoreboard)
+
+            elif self.status.is_final(self.data.overview.status):
+                """ Post Game state """
+                debug.info("Game Over")
+                self.scoreboard = Scoreboard(self.data.overview, self.data.teams_info, self.data.config)
+                self.__render_postgame(self.scoreboard)
+
+
+            elif self.status.is_scheduled(self.data.overview.status):
+                """ Pre-game state """
+                debug.info("Game is Scheduled")
+                self.scoreboard = Scoreboard(self.data.overview, self.data.teams_info, self.data.config)
+                self.__render_pregame(self.scoreboard)
+
+
     def __render_pregame(self, scoreboard):
 #         debug.info("Showing Main Event")
         self.matrix.clear()
@@ -171,26 +147,30 @@ class MainRenderer:
             sleep(self.refresh_rate)
             self.boards._intermission(self.data, self.matrix)
         else:
-            if self.ser.in_waiting > 0:
-                line = self.ser.readline().decode('utf-8').rstrip()
-                debug.info(line)
-                if line == "1":
-                    self._draw_goal_light_display()
-                elif line == "2":
-                    # draw pp animation
-                    self._draw_goal_light_display()
-                elif line == "3":
-                    # draw josh bailey
-                    self._draw_jb_animation()
-                    sleep(6.75)
-                    self._draw_jb_animation()
-                elif line == "4":
-                    debug.info("Pageau")
-                    # draw pageau animation
-                    self._draw_pageau_animation()
-                elif line == "5":
-                    # draw the rangers suck
-                    self._draw_jb_animation()
+
+        if self.ser.in_waiting > 0:
+            line = self.ser.readline().decode('utf-8').rstrip()
+            debug.info(line)
+            if line == "1":
+                self._draw_goal_light_display()
+            elif line == "2":
+                # draw pp animation
+                self._draw_goal_light_display()
+            elif line == "3":
+                # draw josh bailey
+                self._draw_jb_animation()
+                sleep(6.75)
+                self._draw_jb_animation()
+            elif line == "4":
+                debug.info("Pageau")
+                # draw pageau animation
+                self._draw_pageau_animation()
+            elif line == "5":
+                # draw the rangers suck
+                self.draw_scroll_text("CHAARGEE")
+            elif line == "6":
+                # draw the rangers suck
+                self.draw_scroll_text("The Rangers Suck")
 
         if self.runtime_start + self.refresh_rate  < int(round(time.time())):
             self.data.needs_refresh = True
