@@ -4,7 +4,19 @@ import argparse
 import os
 import debug
 from datetime import datetime, timezone
+import math
+import geocoder
 
+def get_lat_lng(location):
+
+    if len(location) > 0:
+        g = geocoder.osm(location)
+        debug.info("location is: " + location + " " + str(g.latlng))
+    else:
+        g = geocoder.ip('me')
+        debug.info("location is: " + g.city + ","+ g.country + " " + str(g.latlng))
+
+    return g.latlng
 
 def get_file(path):
     dir = os.path.dirname(os.path.dirname(__file__))
@@ -52,6 +64,7 @@ def args():
     parser.add_argument("--led-multiplexing", action="store",
                         help="Multiplexing type: 0 = direct; 1 = strip; 2 = checker; 3 = spiral; 4 = Z-strip; 5 = ZnMirrorZStripe; 6 = coreman; 7 = Kaler2Scan; 8 = ZStripeUneven. (Default: 0)",
                         default=0, type=int)
+    parser.add_argument("--terminal-mode", action="store", help="Run on terminal instead of matrix. (Default: False)", default=False, type=bool)                     
 
     return parser.parse_args()
 
@@ -135,3 +148,8 @@ def center_obj(screen_w, lenght):
 def convert_date_format(date):
     d = datetime.strptime(date, '%Y-%m-%d')
     return d.strftime('%b %d')
+
+def round_normal(n, decimals=0):
+    multiplier = 10 ** decimals
+    value = math.floor(n * multiplier + 0.5) / multiplier
+    return int(value) if decimals == 0 else value
