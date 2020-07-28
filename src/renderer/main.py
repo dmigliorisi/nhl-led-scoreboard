@@ -10,8 +10,6 @@ from utils import get_file
 import random
 import glob
 
-
-
 class MainRenderer:
     def __init__(self, matrix, data, sleepEvent):
         self.matrix = matrix
@@ -23,7 +21,9 @@ class MainRenderer:
         self.sog_display_frequency = data.config.sog_display_frequency
         self.alternate_data_counter = 1
 
+
     def render(self):
+
         while self.data.network_issues:
             Clock(self.data, self.matrix, self.sleepEvent, duration=60)
             self.data.refresh_data()
@@ -32,6 +32,7 @@ class MainRenderer:
             try:
                 debug.info('Rendering...')
                 self.data.refresh_data()
+
                 if self.status.is_offseason(self.data.date()):
                     # Offseason (Show offseason related stuff)
                     debug.info("It's offseason")
@@ -42,6 +43,7 @@ class MainRenderer:
                         debug.info("Live mode is off. Going through the boards")
                         self.__render_offday()
                     elif self.data.is_pref_team_offday():
+
                         debug.info("Your preferred teams are Off today")
                         self.__render_offday()
                     elif self.data.is_nhl_offday():
@@ -88,7 +90,7 @@ class MainRenderer:
                 self.data.pb_trigger = False
                 #Display the board from the config
                 self.boards._pb_board(self.data, self.matrix, self.sleepEvent)
-            
+
             # Display the Weather Alert board
             if self.data.wx_alert_interrupt:
                 debug.info('Weather Alert triggered in game day loop....will display weather alert board')

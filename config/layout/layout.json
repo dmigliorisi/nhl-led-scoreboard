@@ -307,5 +307,10 @@
       "font": "wx_medium",
       "align": "center-bottom"
       }
+  },
+  "fanfare": {
+    "text": {
+      "font": "fanfare"
+    }
   }
 }

@@ -45,7 +45,7 @@ class Boards:
                 board = getattr(self,data.config.pushbutton_state_triggered1)
                 data.curr_board = data.config.pushbutton_state_triggered1
                 bord_index -= 1
-            
+
             # Display the Weather Alert board
             if data.wx_alert_interrupt:
                 debug.info('Weather Alert triggered in off day loop....will display weather alert board')
@@ -74,7 +74,7 @@ class Boards:
                 board = getattr(self,data.config.pushbutton_state_triggered1)
                 data.curr_board = data.config.pushbutton_state_triggered1
                 bord_index -= 1
-            
+
             # Display the Weather Alert board
             if data.wx_alert_interrupt:
                 debug.info('Weather Alert triggered in off day loop....will display weather alert board')
@@ -153,6 +153,7 @@ class Boards:
                    bord_index += 1
 
     def fallback(self, data, matrix, sleepEvent):
+        debug.info("FALLING BACK")
         Clock(data, matrix, sleepEvent)
 
     def scoreticker(self, data, matrix,sleepEvent):
