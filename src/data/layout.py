@@ -10,13 +10,5 @@ class Layout:
         self.wxfont = ImageFont.truetype(get_file("assets/fonts/04B_03B_.TTF"), 8)
         self.wxalert_font = ImageFont.truetype(get_file("assets/fonts/vcr_mono.ttf"), 20)
         self.font_large_2 = ImageFont.truetype(get_file("assets/fonts/04B_24__.TTF"), 24)
+        self.font_medium = ImageFont.truetype(get_file("assets/fonts/04B_24__.TTF"), 16)
         self.font_woo = ImageFont.truetype(get_file("assets/fonts/Bungee-Regular.otf"), 24)
-
-    def get_scoreboard_logo_coord(self, team_id):
-        return self.coord["scoreboard"]["logos"][str(team_id)]
-
-    def _get_summary_logo_coord(self, team_id):
-        return self.coord["team_summary"]["logos"][str(team_id)]
-
-    def _get_standings_coods(self):
-        return self.coord["standings"]
