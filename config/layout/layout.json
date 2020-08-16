@@ -23,12 +23,12 @@
     "vs": {
       "position": ["50%", "45%"],
       "align": "center-top",
-      "font": "fanfare"
+      "font": "medium"
     },
     "score": {
       "position": ["50%", "45%"],
       "align": "center-top",
-      "font": "wx_medium"
+      "font": "medium"
     },
     "scheduled_date": {
       "position": ["50%", 0],

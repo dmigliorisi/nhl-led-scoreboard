@@ -85,7 +85,7 @@ class ScoreboardRenderer:
             self.matrix.draw_text_layout(
                 self.layout.period,
                 period,
-                backgroundColor=(255, 0, 0)
+                backgroundColor=(0, 0, 0)
             )
             self.matrix.draw_text_layout(
                 self.layout.clock,
