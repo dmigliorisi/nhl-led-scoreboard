@@ -204,7 +204,7 @@ class Matrix:
             self.draw_text(
                 self.layout_position(layout),
                 text,
-                fill=layout.color,
+                # fill=layout.color,
                 font=layout.font,
                 backgroundColor=backgroundColor, #layout.backgroundColor if hasattr(layout, 'backgroundColor') else None,
                 align=layout.align
