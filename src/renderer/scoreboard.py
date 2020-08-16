@@ -182,9 +182,11 @@ class ScoreboardRenderer:
         
         self.matrix.draw_text_layout(
             self.layout.SOG_label,
-            "SHOTS"
+            "SHOTS",
+            backgroundColor=(0,0,0)
         )
         self.matrix.draw_text_layout(
             self.layout.SOG,
-            SOG
+            SOG,
+            backgroundColor=(0,0,0)
         )
