@@ -91,10 +91,10 @@ class ScoreboardRenderer:
         #         clock
         #     )
 
-        # self.matrix.draw_text_layout(
-        #     self.layout.score,
-        #     score
-        # )
+        self.matrix.draw_text_layout(
+            self.layout.score,
+            score
+        )
 
         self.matrix.render()
         if (3 <= self.scoreboard.away_team.num_skaters <= 4) or (3 <= self.scoreboard.home_team.num_skaters <= 4):
