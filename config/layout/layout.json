@@ -28,7 +28,7 @@
     "score": {
       "position": ["50%", "45%"],
       "align": "center-top",
-      "font": "fanfare"
+      "font": "wx_medium"
     },
     "scheduled_date": {
       "position": ["50%", 0],
