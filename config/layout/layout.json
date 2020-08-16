@@ -28,8 +28,7 @@
     "score": {
       "position": ["50%", "45%"],
       "align": "center-top",
-      "font": "wx_medium",
-      "backgroundColor": [0, 0, 0]
+      "font": "wx_medium"
     },
     "scheduled_date": {
       "position": ["50%", 0],
