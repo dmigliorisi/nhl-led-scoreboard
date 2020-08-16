@@ -32,24 +32,35 @@ class ScoreboardRenderer:
         )
 
     def render(self):
-        self.away_logo_renderer.render()
-        self.home_logo_renderer.render()
+        # self.away_logo_renderer.render()
+        # self.home_logo_renderer.render()
 
-        if self.status.is_scheduled(self.scoreboard.status):
-            self.draw_scheduled()
+        self.draw_test()
 
-        if self.status.is_live(self.scoreboard.status):
-            self.draw_live()
+        # if self.status.is_scheduled(self.scoreboard.status):
+        #     self.draw_scheduled()
 
-        if self.status.is_game_over(self.scoreboard.status):
-            self.draw_final()
+        # if self.status.is_live(self.scoreboard.status):
+        #     self.draw_live()
 
-        if self.status.is_final(self.scoreboard.status):
-            self.draw_final()
+        # if self.status.is_game_over(self.scoreboard.status):
+        #     self.draw_final()
 
-        if self.status.is_irregular(self.scoreboard.status):
-            '''TODO: Need to figure out the irregular status'''
-            self.draw_irregular()
+        # if self.status.is_final(self.scoreboard.status):
+        #     self.draw_final()
+
+        # if self.status.is_irregular(self.scoreboard.status):
+        #     '''TODO: Need to figure out the irregular status'''
+        #     self.draw_irregular()
+
+    def draw_test(self):
+        self.matrix.draw_text(
+            (1, 1), 
+            "TESTING", 
+            font=self.font, 
+            fill=(0, 83, 155)
+        )
+
 
     def draw_scheduled(self):
         start_time = self.scoreboard.start_time
