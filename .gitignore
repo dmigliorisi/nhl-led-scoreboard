@@ -147,3 +147,9 @@ config/config.json.backup
 
 # Local History for Visual Studio Code
 .history/
+
+# Testing file for the nhl api
+src/nhl_api_testing.py
+
+# Extra Layout File
+config/layout/layout_128x64.json
