@@ -198,7 +198,7 @@ class Matrix:
                 pixel.color
             )
 
-    def draw_text_layout(self, layout, text, align="left", backgroundColor=None):
+    def draw_text_layout(self, layout, text, align="left", backgroundColor=(0,0,0)):
         self.cache_position(
             layout.id,
             self.draw_text(

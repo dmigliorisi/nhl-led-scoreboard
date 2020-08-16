@@ -93,7 +93,7 @@ class ScoreboardRenderer:
             # Draw the info
             self.matrix.draw_text_layout(
                 self.layout.period,
-                period,
+                period
             )
             self.matrix.draw_text_layout(
                 self.layout.clock,
@@ -102,7 +102,8 @@ class ScoreboardRenderer:
 
         self.matrix.draw_text_layout(
             self.layout.score,
-            score
+            score,
+            backgroundColor=(0,0,0)
         )
 
         self.matrix.render()
@@ -120,7 +121,8 @@ class ScoreboardRenderer:
         # Draw the info
         self.matrix.draw_text_layout(
             self.layout.scheduled_date, 
-            date
+            date,
+            backgroundColor=(0,0,0)
         )
 
         end_text = result
@@ -129,12 +131,14 @@ class ScoreboardRenderer:
 
         self.matrix.draw_text_layout(
             self.layout.period_final, 
-            end_text
+            end_text,
+            backgroundColor=(0,0,0)
         )
 
         self.matrix.draw_text_layout(
             self.layout.score, 
-            score
+            score,
+            backgroundColor=(0,0,0)
         )
 
         self.matrix.render()
@@ -174,11 +178,11 @@ class ScoreboardRenderer:
         self.matrix.graphics.DrawLine(self.matrix.matrix, 0, self.matrix.height - 3, 0, self.matrix.height - 3,
                                       colors[str(away_number_skaters)])
 
-        self.matrix.graphics.DrawLine(self.matrix.matrix, 63, self.matrix.height - 1, 60,
+        self.matrix.graphics.DrawLine(self.matrix.matrix, self.matrix.width -1, self.matrix.height - 1, self.matrix.width -1,
                                       self.matrix.height - 1, colors[str(home_number_skaters)])
-        self.matrix.graphics.DrawLine(self.matrix.matrix, 63, self.matrix.height - 2, 62,
+        self.matrix.graphics.DrawLine(self.matrix.matrix, self.matrix.width -1, self.matrix.height - 2, self.matrix.width -2,
                                       self.matrix.height - 2, colors[str(home_number_skaters)])
-        self.matrix.graphics.DrawLine(self.matrix.matrix, 63, self.matrix.height - 3, 63,
+        self.matrix.graphics.DrawLine(self.matrix.matrix, self.matrix.width -1, self.matrix.height - 3, self.matrix.width -1,
                                       self.matrix.height - 3, colors[str(home_number_skaters)])
 
     def draw_SOG(self):
@@ -188,9 +192,11 @@ class ScoreboardRenderer:
         
         self.matrix.draw_text_layout(
             self.layout.SOG_label,
-            "SHOTS"
+            "SHOTS",
+            backgroundColor=(0,0,0)
         )
         self.matrix.draw_text_layout(
             self.layout.SOG,
-            SOG
+            SOG,
+            backgroundColor=(0,0,0)
         )
