@@ -81,21 +81,22 @@ class ScoreboardRenderer:
             self.draw_SOG()
             self.show_SOG = False
         else:
-            # # Draw the info
-            # self.matrix.draw_text_layout(
-            #     self.layout.period,
-            #     period,
-            #     "left",
-            #     [255, 0, 0]
-            # )
+            # Draw the info
+            self.matrix.draw_text_layout(
+                self.layout.period,
+                period,
+                backgroundColor=[255, 0, 0]
+            )
             self.matrix.draw_text_layout(
                 self.layout.clock,
-                clock
+                clock,
+                backgroundColor=[0,0,0]
             )
 
         self.matrix.draw_text_layout(
             self.layout.score,
-            score
+            score,
+            backgroundColor=[0,0,0]
         )
 
         self.matrix.render()
