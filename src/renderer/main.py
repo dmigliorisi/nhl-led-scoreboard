@@ -212,30 +212,29 @@ class MainRenderer:
             sleep(self.refresh_rate)
             self.boards._intermission(self.data, self.matrix)
         else:
-
-        if self.ser.in_waiting > 0:
-            line = self.ser.readline().decode('utf-8').rstrip()
-            debug.info(line)
-            if line == "1":
-                self._draw_goal_light_display()
-            elif line == "2":
-                # draw pp animation
-                self._draw_goal_light_display()
-            elif line == "3":
-                # draw josh bailey
-                self._draw_jb_animation()
-                sleep(6.75)
-                self._draw_jb_animation()
-            elif line == "4":
-                debug.info("Pageau")
-                # draw pageau animation
-                self._draw_pageau_animation()
-            elif line == "5":
-                # draw the rangers suck
-                self.draw_scroll_text("CHAARGEE")
-            elif line == "6":
-                # draw the rangers suck
-                self.draw_scroll_text("The Rangers Suck")
+            if self.ser.in_waiting > 0:
+                line = self.ser.readline().decode('utf-8').rstrip()
+                debug.info(line)
+                if line == "1":
+                    self._draw_goal_light_display()
+                elif line == "2":
+                    # draw pp animation
+                    self._draw_goal_light_display()
+                elif line == "3":
+                    # draw josh bailey
+                    self._draw_jb_animation()
+                    sleep(6.75)
+                    self._draw_jb_animation()
+                elif line == "4":
+                    debug.info("Pageau")
+                    # draw pageau animation
+                    self._draw_pageau_animation()
+                elif line == "5":
+                    # draw the rangers suck
+                    self.draw_scroll_text("CHAARGEE")
+                elif line == "6":
+                    # draw the rangers suck
+                    self.draw_scroll_text("The Rangers Suck")
 
         if self.runtime_start + self.refresh_rate  < int(round(time.time())):
             self.data.needs_refresh = True
