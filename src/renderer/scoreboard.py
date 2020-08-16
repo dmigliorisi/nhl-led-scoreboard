@@ -112,7 +112,8 @@ class ScoreboardRenderer:
         # Draw the info
         self.matrix.draw_text_layout(
             self.layout.scheduled_date, 
-            date
+            date,
+            backgroundColor=(0,0,0)
         )
 
         end_text = result
@@ -121,12 +122,14 @@ class ScoreboardRenderer:
 
         self.matrix.draw_text_layout(
             self.layout.period_final, 
-            end_text
+            end_text,
+            backgroundColor=(0,0,0)
         )
 
         self.matrix.draw_text_layout(
             self.layout.score, 
-            score
+            score,
+            backgroundColor=(0,0,0)
         )
 
         self.matrix.render()
@@ -180,9 +183,11 @@ class ScoreboardRenderer:
         
         self.matrix.draw_text_layout(
             self.layout.SOG_label,
-            "SHOTS"
+            "SHOTS",
+            backgroundColor=(0,0,0)
         )
         self.matrix.draw_text_layout(
             self.layout.SOG,
-            SOG
+            SOG,
+            backgroundColor=(0,0,0)
         )
