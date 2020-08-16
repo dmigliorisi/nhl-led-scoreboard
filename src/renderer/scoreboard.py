@@ -32,36 +32,24 @@ class ScoreboardRenderer:
         )
 
     def render(self):
-        # self.away_logo_renderer.render()
-        # self.home_logo_renderer.render()
+        self.away_logo_renderer.render()
+        self.home_logo_renderer.render()
 
-        self.draw_test()
+        if self.status.is_scheduled(self.scoreboard.status):
+            self.draw_scheduled()
 
-        # if self.status.is_scheduled(self.scoreboard.status):
-        #     self.draw_scheduled()
+        if self.status.is_live(self.scoreboard.status):
+            self.draw_live()
 
-        # if self.status.is_live(self.scoreboard.status):
-        #     self.draw_live()
+        if self.status.is_game_over(self.scoreboard.status):
+            self.draw_final()
 
-        # if self.status.is_game_over(self.scoreboard.status):
-        #     self.draw_final()
+        if self.status.is_final(self.scoreboard.status):
+            self.draw_final()
 
-        # if self.status.is_final(self.scoreboard.status):
-        #     self.draw_final()
-
-        # if self.status.is_irregular(self.scoreboard.status):
-        #     '''TODO: Need to figure out the irregular status'''
-        #     self.draw_irregular()
-
-    def draw_test(self):
-        self.matrix.draw_text(
-            (1, 1), 
-            "TESTING", 
-            font=self.font, 
-            fill=(0, 83, 155),
-            backgroundColor=(0, 0, 0)
-        )
-
+        if self.status.is_irregular(self.scoreboard.status):
+            '''TODO: Need to figure out the irregular status'''
+            self.draw_irregular()
 
     def draw_scheduled(self):
         start_time = self.scoreboard.start_time
@@ -89,19 +77,21 @@ class ScoreboardRenderer:
         score = '{}-{}'.format(self.scoreboard.away_team.goals, self.scoreboard.home_team.goals)
         
 
-        # if self.show_SOG:
-        #     self.draw_SOG()
-        #     self.show_SOG = False
-        # else:
-        #     # Draw the info
-        #     self.matrix.draw_text_layout(
-        #         self.layout.period,
-        #         period
-        #     )
-        #     self.matrix.draw_text_layout(
-        #         self.layout.clock,
-        #         clock
-        #     )
+        if self.show_SOG:
+            self.draw_SOG()
+            self.show_SOG = False
+        else:
+            # # Draw the info
+            # self.matrix.draw_text_layout(
+            #     self.layout.period,
+            #     period,
+            #     "left",
+            #     [255, 0, 0]
+            # )
+            self.matrix.draw_text_layout(
+                self.layout.clock,
+                clock
+            )
 
         self.matrix.draw_text_layout(
             self.layout.score,
@@ -177,7 +167,7 @@ class ScoreboardRenderer:
         self.matrix.graphics.DrawLine(self.matrix.matrix, 0, self.matrix.height - 3, 0, self.matrix.height - 3,
                                       colors[str(away_number_skaters)])
 
-        self.matrix.graphics.DrawLine(self.matrix.matrix, self.matrix.width -1, self.matrix.height - 1, self.matrix.width -4,
+        self.matrix.graphics.DrawLine(self.matrix.matrix, self.matrix.width -1, self.matrix.height - 1, self.matrix.width -1,
                                       self.matrix.height - 1, colors[str(home_number_skaters)])
         self.matrix.graphics.DrawLine(self.matrix.matrix, self.matrix.width -1, self.matrix.height - 2, self.matrix.width -2,
                                       self.matrix.height - 2, colors[str(home_number_skaters)])
