@@ -52,7 +52,8 @@ class GoalRenderer:
                 (1, 1), 
                 "GOAL @ {}/{}".format(self.periodTime,self.period), 
                 font=self.font, 
-                fill=(self.team_txt_color['r'], self.team_txt_color['g'], self.team_txt_color['b'])
+                fill=(self.team_txt_color['r'], self.team_txt_color['g'], self.team_txt_color['b']),
+                backgroundColor=(0,0,0)
             )
 
         self.draw_hashtag()
@@ -60,7 +61,8 @@ class GoalRenderer:
                 (11, 8), 
                 str(self.scorer["info"].primaryNumber),
                 font=self.font_medium, 
-                fill=(255,255,255)
+                fill=(255,255,255),
+                backgroundColor=(0,0,0)
             )
         
         # Drawing the Team Badge
@@ -74,13 +76,15 @@ class GoalRenderer:
                 (8, 20), 
                 self.scorer["info"].firstName.upper(),
                 font=self.font, 
-                fill=(255,255,255)
+                fill=(255,255,255),
+                backgroundColor=(0,0,0)
             )
         self.matrix.draw_text(
                 (8, 26), 
                 self.scorer["info"].lastName.upper(),
                 font=self.font, 
-                fill=(255,255,255)
+                fill=(255,255,255),
+                backgroundColor=(0,0,0)
             )
 
     def draw_details(self):
@@ -89,21 +93,24 @@ class GoalRenderer:
                 (1, 1), 
                 "GOAL @ {}/{}".format(self.periodTime,self.period), 
                 font=self.font, 
-                fill=(self.team_txt_color['r'], self.team_txt_color['g'], self.team_txt_color['b'])
+                fill=(self.team_txt_color['r'], self.team_txt_color['g'], self.team_txt_color['b']),
+                backgroundColor=(0,0,0)
             )
 
         scorer_name_coord = self.matrix.draw_text(
                 (1, 8), 
                 self.scorer["info"].lastName.upper(), 
                 font=self.font, 
-                fill=(255, 255, 255)
+                fill=(255, 255, 255),
+                backgroundColor=(0,0,0)
             )
         scorer_points_x_coord = scorer_name_coord["position"][0] + scorer_name_coord["size"][0] + 3
         self.matrix.draw_text(
                 (scorer_points_x_coord, 8), 
                 str(self.scorer["points"]), 
                 font=self.font, 
-                fill=(self.team_bg_color['r'], self.team_bg_color['g'], self.team_bg_color['b'])
+                fill=(self.team_bg_color['r'], self.team_bg_color['g'], self.team_bg_color['b']),
+                backgroundColor=(0,0,0)
             )
 
         self.matrix.draw_text(
@@ -111,6 +118,7 @@ class GoalRenderer:
                 "ASSISTS", 
                 font=self.font, 
                 fill=(self.team_bg_color['r'], self.team_bg_color['g'], self.team_bg_color['b']),
+                backgroundColor=(0,0,0)
             )
 
         assists_y_pos = 21
@@ -127,7 +135,8 @@ class GoalRenderer:
                     (assists_points_x_coord, assists_y_pos), 
                     str(self.assists[i]["points"]), 
                     font=self.font, 
-                    fill=(self.team_bg_color['r'], self.team_bg_color['g'], self.team_bg_color['b'])
+                    fill=(self.team_bg_color['r'], self.team_bg_color['g'], self.team_bg_color['b']),
+                    backgroundColor=(0,0,0)
                 )
                 assists_y_pos += 6
         else:
@@ -135,7 +144,8 @@ class GoalRenderer:
                     (1, assists_y_pos), 
                     "UNASSISTED", 
                     font=self.font, 
-                    fill=(255, 255, 255)
+                    fill=(255, 255, 255),
+                    backgroundColor=(0,0,0)
                 )
 
     def draw_hashtag(self):
