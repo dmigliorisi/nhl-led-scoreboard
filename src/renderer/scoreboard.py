@@ -58,7 +58,8 @@ class ScoreboardRenderer:
             (1, 1), 
             "TESTING", 
             font=self.font, 
-            fill=(0, 83, 155)
+            fill=(0, 83, 155),
+            backgroundColor=(0, 0, 0)
         )
 
 
