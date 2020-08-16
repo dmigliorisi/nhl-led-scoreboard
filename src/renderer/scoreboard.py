@@ -77,24 +77,24 @@ class ScoreboardRenderer:
         score = '{}-{}'.format(self.scoreboard.away_team.goals, self.scoreboard.home_team.goals)
         
 
-        if self.show_SOG:
-            self.draw_SOG()
-            self.show_SOG = False
-        else:
-            # Draw the info
-            self.matrix.draw_text_layout(
-                self.layout.period,
-                period
-            )
-            self.matrix.draw_text_layout(
-                self.layout.clock,
-                clock
-            )
+        # if self.show_SOG:
+        #     self.draw_SOG()
+        #     self.show_SOG = False
+        # else:
+        #     # Draw the info
+        #     self.matrix.draw_text_layout(
+        #         self.layout.period,
+        #         period
+        #     )
+        #     self.matrix.draw_text_layout(
+        #         self.layout.clock,
+        #         clock
+        #     )
 
-        self.matrix.draw_text_layout(
-            self.layout.score,
-            score
-        )
+        # self.matrix.draw_text_layout(
+        #     self.layout.score,
+        #     score
+        # )
 
         self.matrix.render()
         if (3 <= self.scoreboard.away_team.num_skaters <= 4) or (3 <= self.scoreboard.home_team.num_skaters <= 4):
