@@ -8,6 +8,7 @@ from boards.clock import Clock
 from data.scoreboard import Scoreboard
 from renderer.scoreboard import ScoreboardRenderer
 from renderer.goal import GoalRenderer
+from renderer.fanfare import Fanfare
 from utils import get_file
 import serial
 import random
@@ -39,6 +40,7 @@ class MainRenderer:
             self.data.refresh_data()
 
         while True:
+            self.fanfare.listenForSerial()
             try:
                 debug.info('Rendering...')
                 self.data.refresh_data()
