@@ -4,23 +4,20 @@
 from PIL import Image, ImageDraw
 from time import sleep
 import debug
-import serial
 
 class Fanfare:
-    def __init__(self, data, matrix):
+    def __init__(self, ser, data, matrix):
         self.data = data
         self.matrix = matrix
         self.font = data.config.layout.font
-        debug.info("987987*****************")
-        debug.info(self.font)
         self.layout = data.config.config.layout.get_board_layout('fanfare')
-        debug.info(self.layout)
         self.font_woo = self.layout.text.font
-        self.ser = serial.Serial('/dev/ttyACM0', 19200, timeout=1)
+        self.ser = ser
 
     def listenForSerial(self):
-        debug.info("Listening...")
         self.ser.flush()
+        debug.info("Listening...")
+        debug.info(self.ser.in_waiting)
         if self.ser.in_waiting > 0:
             line = self.ser.readline().decode('utf-8').rstrip()
             debug.log("received COMMUNICATION!")

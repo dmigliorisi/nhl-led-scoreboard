@@ -16,13 +16,13 @@ import glob
 
 class MainRenderer:
     def __init__(self, matrix, data, sleepEvent):
-        self.fanfare = Fanfare(data, matrix)
         self.matrix = matrix
         self.data = data
         self.status = self.data.status
         self.refresh_rate = self.data.config.live_game_refresh_rate
         self.boards = Boards()
         self.ser = serial.Serial('/dev/ttyACM0', 19200, timeout=1)
+        self.fanfare = Fanfare(self.ser, data, matrix)
         self.runtime_start = 0
         self.font_woo = ImageFont.truetype(get_file("assets/fonts/Bungee-Regular.otf"), 24)
         self.sleepEvent = sleepEvent
@@ -31,8 +31,6 @@ class MainRenderer:
 
 
     def render(self):
-        # flush the serial communication
-        self.ser.flush()
         self.runtime_start = int(round(time.time()))
         debug.info(self.runtime_start)
 
