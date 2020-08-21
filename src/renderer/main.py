@@ -41,7 +41,6 @@ class MainRenderer:
             self.data.refresh_data()
 
         while True:
-            self.fanfare.listenForSerial()
             try:
                 debug.info('Rendering...')
                 self.data.refresh_data()
@@ -116,6 +115,9 @@ class MainRenderer:
                 self.boards._wx_alert(self.data, self.matrix, self.sleepEvent)
 
             if self.status.is_live(self.data.overview.status):
+                """ Listen for remote """
+                self.fanfare.listenForSerial()
+
                 """ Live Game state """
                 debug.info("Game is Live")
                 self.scoreboard = Scoreboard(self.data.overview, self.data)
@@ -128,8 +130,6 @@ class MainRenderer:
                     self.sleepEvent.wait(self.refresh_rate)
                     self.check_new_goals()
                     self.boards._intermission(self.data, self.matrix,self.sleepEvent)
-                else:
-                    self.sleepEvent.wait(self.refresh_rate)
 
             elif self.status.is_game_over(self.data.overview.status):
                 print(self.data.overview.status)
