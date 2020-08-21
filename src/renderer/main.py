@@ -127,8 +127,6 @@ class MainRenderer:
                     debug.info("Main event is in Intermission")
                     # Show Boards for Intermission
                     self.draw_end_period_indicator()
-                    self.sleepEvent.wait(self.refresh_rate)
-                    self.check_new_goals()
                     self.boards._intermission(self.data, self.matrix,self.sleepEvent)
 
             elif self.status.is_game_over(self.data.overview.status):
